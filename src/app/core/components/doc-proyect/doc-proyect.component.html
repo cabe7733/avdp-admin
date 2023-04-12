@@ -1,0 +1,168 @@
+<div class="flex justify-center flex-wrap justify-evenly my-10">
+
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md w-1/2" [ngClass]="{'disable': !proyect}">
+        <h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-center">Proyectos</h2>
+        <hr class="my-4">
+        <form class="" [formGroup]="proyectForm" (ngSubmit)="onSubmitProyect()">
+            <div class="form-group mb-6">
+                <label class="block text-center">
+                  <span class="block text-sm font-medium mb-2">Nombre del proyecto</span>
+                  <input type="text" formControlName="nomProyetc" class="form-input w-full px-4 py-3 rounded-full">
+                </label>
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class=" text-center py-2 lg:px-4">
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="name?.errors?.['required']">
+                        <span class="font-medium">Nombre proyecto</span> es requerido
+                    </div>
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="name?.errors?.['minlength']">
+                        <span class="font-medium">Nombre proyecto</span> debe tener al menos 4 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-6">
+                <label class="block">
+                  <span class="sr-only">Choose profile photo</span>
+                  <input type="file" (change)="onFileChangeProyect($event)" formControlName="fileProyect" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+                  <div *ngIf="fileProyect?.invalid && (fileProyect?.dirty || fileProyect?.touched)" class=" text-center py-2 lg:px-4">
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="fileProyect?.errors?.['required']">
+                        <span class="font-medium">El documento es requerido</span> es requerido
+                    </div>
+                  </div>
+                </label>
+            </div>
+            <div class="form-group mb-6 text-center">
+                <button type="submit" [disabled]="!proyectForm.valid" class="inline-block px-6 py-2.5 bg-violet-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-violet-700 hover:shadow-lg focus:bg-violet-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-700 active:shadow-lg transition duration-150 ease-in-out">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md w-1/2">
+        <h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-center">Documentos</h2>
+        <hr class="my-4">
+        <form [formGroup]="docForm" (ngSubmit)="onSubmitDoc()">
+            <div class="form-group mb-6">
+                <label class="block text-center">
+                  <span class="block text-sm font-medium mb-2">Nombre del Documento</span>
+                  <input formControlName="nomDoc" type="text" class="form-input w-full px-4 py-3 rounded-full">
+                </label>
+                <div *ngIf="nomDoc?.invalid && (nomDoc?.dirty || nomDoc?.touched)" class=" text-center py-2 lg:px-4">
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="nomDoc?.errors?.['required']">
+                        <span class="font-medium">Nombre Documento</span> es requerido
+                    </div>
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="nomDoc?.errors?.['minlength']">
+                        <span class="font-medium">Nombre Documento</span> debe tener al menos 4 caracteres.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-6">
+                <label class="block">
+                  <span class="sr-only">Choose profile photo</span>
+                  <input formControlName="fileDoc" (change)="onFileChangeDoc($event)" type="file" class="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100
+                  "/>
+                  <div *ngIf="fileDoc?.invalid && (fileDoc?.dirty || fileDoc?.touched)" class=" text-center py-2 lg:px-4">
+                    <div class="p-2 text-sm text-red-700 bg-red-100 rounded-full dark:bg-red-200 dark:text-red-800" role="alert" *ngIf="fileDoc?.errors?.['required']">
+                        <span class="font-medium">El documento es requerido</span> es requerido
+                    </div>
+                  </div>
+                </label>
+            </div>
+            <div class="form-group mb-6 text-center">
+                <button type="submit" [disabled]="!docForm.valid" class="inline-block px-6 py-2.5 bg-violet-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-violet-700 hover:shadow-lg focus:bg-violet-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-violet-700 active:shadow-lg transition duration-150 ease-in-out">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="flex items-center justify-center py-5 px-2">
+    <div class="w-1/2 sm:px-6">
+        <div class="px-4 md:px-10 py-4 md:py-7 bg-gray-100 rounded-tl-lg rounded-tr-lg">
+            <div class="sm:flex items-center justify-between">
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Proyectos</p>
+            </div>
+        </div>
+        <div class="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
+            <table class="w-full whitespace-nowrap">
+                <thead>
+                    <tr class="h-16 w-full text-sm leading-none text-gray-800">
+                        <th class="font-normal text-left pl-4">Nombre Proyecto</th>
+                        <th class="font-normal text-left pl-12">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody class="w-full">
+                    <tr *ngFor="let item of poryectList" class="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
+                        <td class="pl-4 cursor-pointer">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                    </svg>
+                                </div>
+                                <div class="pl-4">
+                                    <p class="font-medium">{{item.name}}</p>
+                                    <p class="text-xs leading-3 text-gray-600 pt-2">{{item.id}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-7 2xl:px-0">
+                            <button class="focus:outline-none pl-11" (click)="deleteProyect(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="w-1/2 sm:px-6">
+        <div class="px-4 md:px-10 py-4 md:py-7 bg-gray-100 rounded-tl-lg rounded-tr-lg">
+            <div class="sm:flex items-center justify-between">
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Documentos</p>
+                <button type="button" (click)="getDoc()" data-te-ripple-init data-te-ripple-color="light" class="inline-block rounded-full bg-violet-600 text-white p-2 uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-violet-500 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+                </button>
+            </div>
+        </div>
+        <div class="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
+            <table class="w-full whitespace-nowrap">
+                <thead>
+                    <tr class="h-16 w-full text-sm leading-none text-gray-800">
+                        <th class="font-normal text-left pl-4">Nombre Documento</th>
+                        <th class="font-normal text-left pl-12">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody class="w-full">
+                    <tr *ngFor="let item of docList" class="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
+                        <td class="pl-4 cursor-pointer" (click)="openDoc(item.url)">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                                    </svg>
+                                </div>
+                                <div class="pl-4">
+                                    <p class="font-medium">{{item.name}}</p>
+                                    <p class="text-xs leading-3 text-gray-600 pt-2">{{item.id}}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-7 2xl:px-0">
+                            <button class="focus:outline-none pl-11" (click)="deleteDoc(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

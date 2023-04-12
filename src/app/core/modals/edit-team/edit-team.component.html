@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h5 class="modal-title h4">
+        <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white" [src]="dataForm.img" alt="" /> {{dataForm.nombre}}
+    </h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="teamForm" (ngSubmit)="onSubmitTeam()">
+        <div class="grid grid-cols-2 gap-4">
+            <div class="form-group mb-3">
+                <input formControlName="name" type="text" class="form-input px-4 py-3 rounded-full w-full" placeholder="Nombre">
+            </div>
+            <div class="form-group mb-3">
+                <input formControlName="cargo" type="text" class="form-input px-4 py-3 rounded-full w-full" placeholder="Cargo">
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <textarea formControlName="desc" [value]="dataForm.desc" type="text" class="form-input px-4 py-3 rounded-full w-full" id="exampleInput126" placeholder="Describcion"></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" (click)="modalRef.close()" class="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded-full text-white text-uppercase px-6 py-2 text-xs">Ingresar</button>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded-full text-white text-uppercase px-6 py-2 text-xs" (click)="close()">
+    Close
+  </button>
+</div>
